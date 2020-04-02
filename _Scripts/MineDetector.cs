@@ -13,7 +13,7 @@ public class MineDetector : MonoBehaviour
 
 
 
-    //This 
+    //This will detect the collidor
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("player"))

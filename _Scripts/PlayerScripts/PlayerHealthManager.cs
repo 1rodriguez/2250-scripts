@@ -5,15 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour
 {
+
+    //Variables to store the starting and current health of the palyer
     public int playerMaxHealth;
     public int playerCurrentHealth;
     private int _sceneIdentifier = 3;
-    // Start is called before the first frame update
 
+    //Setting the inital health of the player
     void Start()
     {
         playerCurrentHealth = playerMaxHealth;
     }
+
+    //Setting the player to active false if the player has no health left
     void Update()
     {
         if (playerCurrentHealth <= 0)
@@ -23,12 +27,14 @@ public class PlayerHealthManager : MonoBehaviour
         }
     }
 
+    //Damaging the player
     public void HurtPlayer(int dmg)
     {
         playerCurrentHealth -= dmg;
 
     }
 
+    //Setting the initial health of the palyer
     public void SetMaxHealth(int max)
     {
         playerMaxHealth = max;

@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class BulletMovementEnemy : MonoBehaviour
 {
-
-
+    //This will be a public integer to store how much damage a bulet does
     public int damageDealt = 30;
 
-    //This rigidBody will be what the builder
+    //Getting other variables necessary
     public Rigidbody2D theRigidBody;
-    int counter = 0;
-    //The speed will control 
     public float speed;
 
     // Start is called before the first frame update
@@ -27,21 +24,21 @@ public class BulletMovementEnemy : MonoBehaviour
     public void movement(Vector2 direction)
     {
         theRigidBody.velocity = direction.normalized * speed;
-        Debug.Log(theRigidBody.velocity);
-        Debug.Log("RAN");
-
-
     }
 
+    //Checking if the bullet hits the player and hurting the player
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("player"))
         {
-            //            Destroy(other.gameObject);
+            //Damaging the player
             other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageDealt);
+
+            //Destroying the bullet
             Destroy(this.gameObject);
-            // TODO: add player XP each time an enemy is killed
         }
+
+        //Destroyign the bullet if it hits a wall
         if (other.gameObject.CompareTag("wall"))
         {
             Destroy(this.gameObject);

@@ -30,15 +30,18 @@ public class BulletMovement : MonoBehaviour
         Debug.Log(direction);
     }
 
+
+    //Detecting the collision
     void OnTriggerEnter2D(Collider2D other)
     {
+        //If the other tag is enemy then the function will hurt the enemy
         if (other.gameObject.CompareTag("enemy"))
         {
-            //            Destroy(other.gameObject);
             other.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageDealt);
             Destroy(this.gameObject);
-            // TODO: add player XP each time an enemy is killed
         }
+        
+        //Will destroy the bullet if it hits a wall
         if (other.gameObject.CompareTag("wall"))
         {
             Destroy(this.gameObject);

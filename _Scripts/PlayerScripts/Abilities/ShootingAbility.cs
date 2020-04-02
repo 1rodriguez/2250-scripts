@@ -19,13 +19,14 @@ public class ShootingAbility : GenericAbility
            Animator playerAnimator, Rigidbody2D playerRB = null)
     {
 
-        //Starting by creating the projectilek
+        //Starting by creating the projectile
         //Looking at where the player is facing
         float direction = Mathf.Atan2(currentDirection.y, currentDirection.x);
 
         //Instantiating the object with regards to where the player is facing
         GameObject newObject = Instantiate(myObject, playerPosition, Quaternion.Euler(0f, 0f, direction));
 
+        //Getting the bullet movement script fromt he bullet and moving the bullet with that method
         BulletMovement movement = newObject.GetComponent<BulletMovement>();
         if (movement)
         {
